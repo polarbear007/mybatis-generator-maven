@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+	          connectionURL="jdbc:mysql://localhost:3306/mybatis?serverTimezone=UTC&amp;useSSL=false" 
+			            userId="root"
+			            password="root">
+		</jdbcConnection>
+		<!--  配置 oracle 数据库     
+<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			                  connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg" 
+			                   userId="yycg"
+			                  password="yycg">
+		    </jdbcConnection> 
+-->
+
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成PO类的位置 -->
+		<javaModelGenerator targetPackage="cn.itcast.entity"
+			targetProject=".\src\main\java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="cn.itcast.mapper" 
+			targetProject=".\src\main\java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="cn.itcast.mapper" 
+			targetProject=".\src\main\java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 指定数据库表 
+               如果是 mysql，那么一般来说可以通过 catalog  +  tableName 这两个属性来确定数据库表的位置
+               在 mysql 中 catalog 相当于 数据库名
+               使用 Mysql 数据库的话，建议一定要指定 catalog， 因为如果不指定的话，如果在不同的数据库有相同的表名，
+               执行逆向工程的时候，就会根据这个表名找到所有的表，最后生成的代码往往不是我们想要的！！！
+但是指定了以后， 生成的sql 语句查询 user 表的时候会变成    mybatis..user
+			  所以，生成了以后，我们应该在  mapper.xml 文件中把   "mybatis.." 替换成  ""  空字符串
+-->
+		<table schema="" tableName="user" catalog="mybatis"></table>
+		<table schema="" tableName="orders" catalog="mybatis"></table>
+		
+		<!-- 有些表的字段需要指定java类型
+               Table 标签里面还可以使用  columnOverride 子标签对每个字段进行详细映射设置
+               一般来说，表的字段名跟pojo 类的属性名一致；  如果字段名是  xxx_xxx 的形式，则会自动替换成 xxxXxx 
+		 <table schema="" tableName="">
+			<columnOverride column="" javaType="" property=”” />
+		</table> -->
+	</context>
+</generatorConfiguration>
