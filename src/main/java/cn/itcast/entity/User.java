@@ -1,17 +1,19 @@
 package cn.itcast.entity;
 
-import java.util.Date;
-
 public class User {
     private Integer uid;
 
     private String username;
 
-    private Date birthday;
+    private String password;
 
-    private String sex;
+    private String phone;
 
-    private String address;
+    private String email;
+
+    private Integer state;
+
+    private String aventorPath;
 
     public Integer getUid() {
         return uid;
@@ -29,27 +31,43 @@ public class User {
         this.username = username == null ? null : username.trim();
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public String getPassword() {
+        return password;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public String getSex() {
-        return sex;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public String getAventorPath() {
+        return aventorPath;
+    }
+
+    public void setAventorPath(String aventorPath) {
+        this.aventorPath = aventorPath == null ? null : aventorPath.trim();
     }
 }

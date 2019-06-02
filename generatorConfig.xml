@@ -11,7 +11,7 @@
 		</commentGenerator>
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-	          connectionURL="jdbc:mysql://localhost:3306/mybatis?serverTimezone=UTC&amp;useSSL=false" 
+	          connectionURL="jdbc:mysql://localhost:3306/springboot_book_online?serverTimezone=UTC&amp;useSSL=false" 
 			            userId="root"
 			            password="root">
 		</jdbcConnection>
@@ -58,9 +58,12 @@
 但是指定了以后， 生成的sql 语句查询 user 表的时候会变成    mybatis..user
 			  所以，生成了以后，我们应该在  mapper.xml 文件中把   "mybatis.." 替换成  ""  空字符串
 -->
-		<table schema="" tableName="user" catalog="mybatis"></table>
-		<table schema="" tableName="orders" catalog="mybatis"></table>
-		
+		<table schema="" tableName="t_author" catalog="springboot_book_online" domainObjectName="Author"></table>
+		<table schema="" tableName="t_book_category" catalog="springboot_book_online" domainObjectName="BookCategory"></table>
+		<table schema="" tableName="t_book_info" catalog="springboot_book_online" domainObjectName="BookInfo"></table>
+		<table schema="" tableName="t_chapter" catalog="springboot_book_online" domainObjectName="Chapter"></table>
+		<table schema="" tableName="t_role" catalog="springboot_book_online" domainObjectName="Role"></table>
+		<table schema="" tableName="t_user" catalog="springboot_book_online" domainObjectName="User"></table>
 		<!-- 有些表的字段需要指定java类型
                Table 标签里面还可以使用  columnOverride 子标签对每个字段进行详细映射设置
                一般来说，表的字段名跟pojo 类的属性名一致；  如果字段名是  xxx_xxx 的形式，则会自动替换成 xxxXxx 

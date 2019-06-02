@@ -1,4 +1,4 @@
-package cn.itcast.generator;
+package cn.itcast;
 
 import java.io.File;
 import java.util.ArrayList;
